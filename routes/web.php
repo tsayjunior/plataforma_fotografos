@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CartsController;
+use App\Http\Controllers\photographiesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('product');
-});
+// Route::get('/', [PhotographyController::class, index]);
+Route::resource('/', photographiesController::class);
+// Route::apiResource('eventos', EventoController::class); //para api
+
+
+// Route::get('/', function () {
+//     return view('product');
+// });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -25,4 +32,9 @@ require __DIR__.'/auth.php';
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::resource('/', CartsController::class);
+Route::post('/cart', [CartsController::class, 'store'])->name('cart');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/checkout', [CartsController::class, 'index'])->name('checkout');
+
