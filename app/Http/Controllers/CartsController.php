@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\cart;
 use App\Models\Photography;
 use Illuminate\Http\Request;
+use Stripe;
 
 class CartsController extends Controller
 {
@@ -172,7 +173,19 @@ class CartsController extends Controller
         $cvv=$request->get('cvv');
         $cardNumber=$request->get('cardNumber');
         
+        //proceso de pago
+        $stripe= Stripe::make(env('STRIPE_KEY'));
 
-        dd($request->all());
+        $token = $stripe->tokens()->create([
+            'card' => [
+            'number' =>$cardNumber,
+            'exp_month' =>$expirationMonth,
+            'exp_year' => $expirationYear,
+            'cvc' => $cvv ,
+            ]
+       ]);
+       dd ($token);
+
+        // dd($request->all());
     }
 }
