@@ -19,4 +19,8 @@ class cart extends Model
         'created_at',
         'updated_at'
     ];
+    //relacion con la tabla fotografia
+    public function photography(){
+        return $this->hasMany(photography::class, 'id', 'photography_id');
+    }
 }

@@ -124,4 +124,55 @@ class CartsController extends Controller
     {
         //
     }
+
+    public function getCartIetmsForCheckout()
+    {
+        $finalData = [];
+        $cartItems = cart::with('photography')->where('user_id', auth()->user()->id)->get();
+        $amount = 0;
+
+        if (isset($cartItems)) {
+            // echo "<pre>";
+            foreach ($cartItems as $cartItem) {
+                if ($cartItem->photography) {
+                    foreach ($cartItem->photography as $cartPhotography) {
+                        // var_dump($cartPhotography->name);
+                        if ($cartPhotography->id == $cartItem->photography_id) {
+                            $finalData[$cartItem->photography_id]['id'] = $cartPhotography->id;
+                            $finalData[$cartItem->photography_id]['name'] = $cartPhotography->name;
+                            $finalData[$cartItem->photography_id]['sale_price'] = $cartItem->price;
+                            $finalData[$cartItem->photography_id]['quantity'] = $cartItem->quantity;
+                            $finalData[$cartItem->photography_id]['total'] = $cartItem->price * $cartItem->quantity;
+                            $amount += $cartItem->price * $cartItem->quantity;
+                            $finalData['totalAmount']= $amount;
+                        }
+                    }
+                    // var_dump(($cartItem->photography[0]->name));
+                }
+            };
+            // dd($finalData);
+        }
+        // dd($cartItems);
+        return response()->json($finalData);
+    }
+    public function processPayment(Request $request)
+    {
+        $firstName=$request->get('firstName');
+        $lastName=$request->get('lastName');
+        $email=$request->get('email');
+        $phone=$request->get('phone');
+        $address=$request->get('address');
+        $city=$request->get('city');
+        $state=$request->get('state');
+        $zipCode=$request->get('zipCode');
+        $country=$request->get('country');
+        $cardType=$request->get('cardType');
+        $expirationMonth=$request->get('expirationMonth');
+        $expirationYear=$request->get('expirationYear');
+        $cvv=$request->get('cvv');
+        $cardNumber=$request->get('cardNumber');
+        
+
+        dd($request->all());
+    }
 }
