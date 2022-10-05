@@ -1,7 +1,7 @@
-<h1>hola mundo</h1>  
+{{-- <h1>hola mundo</h1>  
 <div id="app">
 <example-component/>
-</div>
+</div> --}}
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -17,7 +17,7 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     You're logged in!
                     <label for="fdsfsd">hello</label>
-                    <example-component/>
+                    {{-- <example-component/> --}}
                 </div>
             </div>
         </div>

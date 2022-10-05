@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\fotografo;
-use App\Models\persona;
-use App\Models\Photography;
 use Illuminate\Http\Request;
 
-class photographiesController extends Controller
+class FotografoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,20 +14,7 @@ class photographiesController extends Controller
      */
     public function index()
     {
-        // dd(auth()->user());
-        $photographies= Photography::all();//fotografias
-        if((auth()->user())){
-            $user_id= auth()->user()->id;
-            $fotografo= fotografo::where('user_id', $user_id)->exists();
-            $persona= persona::where('user_id', $user_id)->exists();
-            if($fotografo || $persona){
-                return view('product', compact('photographies'));
-            }else{
-                return view('fotografo.crearFotografo', compact($user_id));
-            }
-        }
-
-        return view('product', compact('photographies'));
+        //
     }
 
     /**
@@ -39,7 +24,7 @@ class photographiesController extends Controller
      */
     public function create()
     {
-        return view('fotografo.crearFotografo');
+        
     }
 
     /**
@@ -56,10 +41,10 @@ class photographiesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\fotografo  $fotografo
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(fotografo $fotografo)
     {
         //
     }
@@ -67,10 +52,10 @@ class photographiesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\fotografo  $fotografo
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(fotografo $fotografo)
     {
         //
     }
@@ -79,10 +64,10 @@ class photographiesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\fotografo  $fotografo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, fotografo $fotografo)
     {
         //
     }
@@ -90,11 +75,16 @@ class photographiesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\fotografo  $fotografo
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(fotografo $fotografo)
     {
         //
     }
-}
+
+    public function createFotografo()
+    {
+        return view('fotografo.crearFotografo');
+    }   
+}   

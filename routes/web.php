@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CartsController;
+use App\Http\Controllers\FotografoController;
 use App\Http\Controllers\photographiesController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,17 +17,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Route::get('/', [PhotographyController::class, index]);
-Route::resource('/', photographiesController::class);
 // Route::apiResource('eventos', EventoController::class); //para api
 
 
 // Route::get('/', function () {
 //     return view('product');
 // });
+Route::resource('/', photographiesController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+Route::get('/crear_fotografo', [FotografoController::class, 'create}Fotografo'])->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
 
