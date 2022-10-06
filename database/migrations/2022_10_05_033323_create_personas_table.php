@@ -25,7 +25,7 @@ class CreatePersonasTable extends Migration
             $table->string('profesion')->nullable();
             $table->string('lugar_trabajo')->nullable();
             $table->string('residencia')->nullable();
-            $table->char('tipo', 1)->nullable();//P o F//usuario persona, o usuario fotografo, en este caso, un fotografo puede ser usuario al mismo tiempo
+            $table->char('tipo', 1);//P o F//usuario persona, o usuario fotografo, en este caso, un fotografo puede ser usuario al mismo tiempo
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();

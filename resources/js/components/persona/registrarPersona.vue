@@ -1,394 +1,251 @@
 <template>
     <!-- <div> -->
-        <div class="container checkoutBox">
-            <h1>prueba</h1>
-            <!-- <div class="row">
-                <div class="col-lg-8 col-md-8 col-sm-7 col-xs-12">
-                    <div class="box">
-                        <h3 class="box-title">Carrito de fotografias</h3>
-                        <div class="plan-selection" v-for="item in items" :key="item.id">
-                            <div class="plan-data" v-if="item.name">
-                                <input id="question1" name="question" type="radio" class="with-font" value="sel" />
-                                <label for="question1">{{ item.name }}</label>
-                                <p class="plan-text">
-                                    Cantidad: {{ item.quantity }}
-                                </p>
-                                <span class="plan-price">
-                                    Precio: {{ item.sale_price }}
+    <div class="container center checkoutBox">
+        <div class="card bg-light">
+
+            <div class="text-center col-md-12 col-xs-12">
+                <h2>Formulario de registro</h2>
+            </div>
+            <article class="card-body mx-auto" style="max-width: 400px">
+                <div class="form-group">
+                    <div class="col-md-12 col-xs-12">
+                        <strong>Carnet de Identidad</strong>
+
+                        <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fa fa-user"></i>
                                 </span>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-6 col-xs-12">
-                                <strong>Pais</strong>
-                                <input type="text" name="country" v-model="country" class="form-control" value="" />
-                            </div>
-                            <div class="col-md-6 col-xs-12">
-                                <strong>Nombre</strong>
-                                <input type="text" name="first-name" v-model="firstName" class="form-control"
-                                    value="" />
-                            </div>
-                            <div class="col-md-6 col-xs-12">
-                                <strong>Apellido</strong>
-                                <input type="text" name="last-name" v-model="lastName" class="form-control" value="" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-12">
-                                <strong>Direccion</strong>
-                            </div>
-                            <div class="col-md-12">
-                                <input type="text" name="address" v-model="address" class="form-control" value="" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-12">
-                                <strong>Ciudad</strong>
-                            </div>
-                            <div class="col-md-12">
-                                <input type="text" name="city" v-model="city" class="form-control" value="" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-12">
-                                <strong>Estado</strong>
-                            </div>
-                            <div class="col-md-12">
-                                <input type="text" name="state" v-model="state" class="form-control" value="" />
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-12">
-                                <strong>Codigo Postal</strong>
-                            </div>
-                            <div class="col-md-12">
-                                <input type="text" name="zip_code" v-model="zipCode" class="form-control" value="" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-12">
-                                <strong>Celular</strong>
-                            </div>
-                            <div class="col-md-12">
-                                <input type="text" name="phone_number" v-model="phone" class="form-control" value="" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-12">
-                                <strong>Correo electrónico</strong>
-                            </div>
-                            <div class="col-md-12">
-                                <input type="email" name="email_address" v-model="email" class="form-control" value="" />
-                            </div>
-                        </div>
-
-                        <br />
-                        <div class="panel-body">
-                            <div class="form-group">
-                                <div class="col-md-12">
-                                    <strong>Card Type: </strong>
-                                </div>
-                                <div class="col-md-12">
-                                    <select id="CreditCardType" v-model="cardType" name="CreditCardType"
-                                        class="form-control">
-                                        <option value="5">Visa</option>
-                                        <option value="6">MasterCard</option>
-                                        <option value="7">
-                                            American Express
-                                        </option>
-                                        <option value="8">Discover</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-12">
-                                <strong>Credit Card Number: </strong>
-                            </div>
-                            <div class="col-md-12">
-                                <input type="text " v-model="cardNumber" class="form-control" name="car_number" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-12">
-                                <strong>Card cvv: </strong>
-                            </div>
-                            <div class="col-md-12">
-                                <input type="text " v-model="cvv" class="form-control" name="car_code" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-12">
-                                <strong> Fecha de expiracion </strong>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <select class="form-control" name="" v-model="expirationMonth">
-                                    <option value="">Mes</option>
-                                    <option value="01">01</option>
-                                    <option value="02">02</option>
-                                    <option value="03">03</option>
-                                    <option value="04">04</option>
-                                    <option value="02">05</option>
-                                    <option value="03">06</option>
-                                    <option value="04">07</option>
-                                    <option value="02">08</option>
-                                    <option value="03">09</option>
-                                    <option value="04">10</option>
-                                    <option value="02">11</option>
-                                    <option value="03">12</option>
-                                </select>
-                            </div>
-                            <div class="col-md-12">
-                                <strong> Año de expiracion </strong>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <select class="form-control" name="" v-model="expirationYear">
-                                    <option value="">Año</option>
-                                    <option value="2015">2015</option>
-                                    <option value="2016">2016</option>
-                                    <option value="2017">2017</option>
-                                    <option value="2018">2018</option>
-                                    <option value="2019">2019</option>
-                                    <option value="2020">2020</option>
-                                    <option value="2021">2021</option>
-                                    <option value="2022">2022</option>
-                                    <option value="2023">2023</option>
-                                    <option value="2024">2024</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-xs-12">
-                                <button type="submit" class="btn btn-primary btn-submit-fix"
-                                    v-on:click.prevent="getUserAddress()">
-                                    Realizar pedido
-                                </button>
-                            </div>
+                            <input type="text" name="ci" v-model="form.ci" class="form-control" placeholder="C.I." />
                         </div>
                     </div>
-
-                     <div class="box">
-                        <h3 class="box-title">Select term length</h3>
-                        <div class="plan-selection">
-                            <div class="plan-data">
-                                <input
-                                    id="question4"
-                                    name="question"
-                                    type="radio"
-                                    class="with-font"
-                                    value="sel"
-                                />
-                                <label for="question4">1 Month</label>
-                                <span class="plan-price term-price"
-                                    >$29 / mo</span
-                                >
+                    <div class="col-md-12 col-xs-12">
+                        <strong>Nombre</strong>
+                        <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fa fa-user"></i>
+                                </span>
                             </div>
-                        </div>
-                        <div class="plan-selection">
-                            <div class="plan-data">
-                                <input
-                                    id="question5"
-                                    name="question"
-                                    type="radio"
-                                    class="with-font"
-                                    value="sel"
-                                />
-                                <label for="question5">12 Month</label>
-                                <span class="plan-price term-price"
-                                    >$348 / mo</span
-                                >
-                            </div>
-                        </div>
-                        <div class="plan-selection">
-                            <div class="plan-data">
-                                <input
-                                    id="question6"
-                                    name="question"
-                                    type="radio"
-                                    class="with-font"
-                                    value="sel"
-                                />
-                                <label for="question6">24 Month</label>
-                                <span class="plan-price term-price"
-                                    >$696 / mo</span
-                                >
-                            </div>
+                            <input type="text" name="nombre" v-model="form.nombre" class="form-control" />
                         </div>
                     </div>
-                    <div class="box">
-                        <h3 class="box-title">Secure your site</h3>
-                        <div class="plan-selection">
-                            <div class="plan-data">
-                                <input
-                                    id="box1"
-                                    type="checkbox"
-                                    class="with-font"
-                                />
-                                <label for="box1"
-                                    >Add malware scan and removal</label
-                                >
-                                <p class="plan-text">
-                                    Nam sodales exviverra pretium erat ifermeoin
-                                    accumsan ligula duiin ornare tortor euismod
-                                    nece.
-                                </p>
-                                <span class="plan-price secure-price"
-                                    >$229 / mo</span
-                                >
+                    <div class="col-md-12 col-xs-12">
+                        <strong>Apellido</strong>
+                        <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fa fa-user"></i>
+                                </span>
                             </div>
-                        </div>
-                        <div class="plan-selection">
-                            <div class="plan-data">
-                                <input
-                                    id="box2"
-                                    type="checkbox"
-                                    class="with-font"
-                                />
-                                <label for="box2"
-                                    >Add standard SSL Certificate</label
-                                >
-                                <p class="plan-text">
-                                    Class aptent taciti sociosqu ad litora
-                                    torquent perconu bia nostrper inceptos
-                                    himenelquet dui.
-                                </p>
-                                <span class="plan-price secure-price"
-                                    >$429 / mo</span
-                                >
-                            </div>
+                            <input type="text" name="apellido" v-model="form.apellido" class="form-control" />
                         </div>
                     </div>
-                    <a href="#" class="btn btn-primary btn-lg mb30"
-                        >Continue With Plans</a
-                    >
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-5 col-xs-12">
-                    <div class="widget">
-                        <h4 class="widget-title">Order Summary</h4>
-                        <div class="summary-block" v-for="sumaryItem in items" :key="sumaryItem.id">
-                            <div class="summary-content" v-if="sumaryItem.name">
-                                <div class="summary-head">
-                                    <h5 class="summary-title">
-                                        {{ sumaryItem.name }}
-                                    </h5>
-                                </div>
-                                <div class="summary-price">
-                                    <p class="summary-text">
-                                        $ {{ sumaryItem.total }}
-                                    </p>
-                                    <span class="summary-small-text pull-right">
-                                        cantidad: {{ sumaryItem.quantity }} x
-                                        precio: {{ sumaryItem.sale_price }}
+                    <div class="col-md-12 col-xs-12">
+                        <strong>Descripcion (*)</strong>
+                        <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fa fa-user"></i>
+                                </span>
+                            </div>
+                            <input type="text" name="descripcion" v-model="form.descripcion" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12 col-xs-12">
+                            <strong>Fecha Nacimiento</strong>
+                            <div class="form-group input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fa fa-user"></i>
                                     </span>
                                 </div>
+                                <input type="date" name="fecha_nac" v-model="form.fecha_nac" class="form-control" />
                             </div>
                         </div>
-                        <!-- <div class="summary-block">
-                            <div class="summary-content">
-                                <div class="summary-head">
-                                    <h5 class="summary-title">
-                                        Website Security Essential
-                                    </h5>
-                                </div>
-                                <div class="summary-price">
-                                    <p class="summary-text">$229 / mo</p>
-                                    <span class="summary-small-text pull-right"
-                                        >1 month</span
-                                    >
-                                </div>
+                    </div>
+
+                    <div class="col-md-12 col-xs-12">
+                        <strong>Celular</strong>
+                        <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fa fa-user"></i>
+                                </span>
                             </div>
-                        </div> 
-                        <div class="summary-block">
-                            <div class="summary-content">
-                                <div class="summary-head">
-                                    <h5 class="summary-title">Total</h5>
-                                </div>
-                                <div class="summary-price">
-                                    <p class="summary-text">
-                                        {{ items.totalAmount }}
-                                    </p>
-                                    <span class="summary-small-text pull-right"></span>
-                                </div>
-                                <div class="text-right">
-                                    <hr />
-                                    <button class="btn btn-warning">
-                                        Realizar pedido
-                                    </button>
+                            <input type="text" name="celular" v-model="form.celular" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-xs-12">
+                        <strong>Profesion (*)</strong>
+                        <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fa fa-user"></i>
+                                </span>
+                            </div>
+                            <input type="text" name="profesion" v-model="form.profesion" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-xs-12">
+                        <strong>Lugar de Trabajo (*)</strong>
+                        <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fa fa-user"></i>
+                                </span>
+                            </div>
+                            <input type="text" name="lugar_trabajo" v-model="form.lugar_trabajo" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-xs-12">
+                        <strong>residencia (*)</strong>
+                        <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fa fa-user"></i>
+                                </span>
+                            </div>
+                            <input type="text" name="residencia" v-model="form.residencia" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12 col-xs-12">
+                            <strong>Sexo (*)</strong>
+                            <!-- <input type="text" name="sexo" v-model="form.sexo" class="form-control" /> -->
+                            <div class="form-group input-group">
+                                <div id="example-3">
+
+                                    <input type="radio" id="uno" value="Uno" v-model="form.sexo">
+                                    <label for="uno">Maculino</label>
+                                    <input type="radio" id="Dos" value="Dos" v-model="form.sexo">
+                                    <label for="Dos">Femenino</label>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-12 col-xs-12">
+                        <strong>Registrarse como Fotografo?</strong>
+                        <!-- <input type="text" name="tipo" v-model="form.tipo" class="form-control" /> -->
+                        <div id="example-3">
+                            <!-- <input type="checkbox" id="jack" value="M" v-model="form.tipo" />
+                    <label for="jack">Fotografo</label>
+                    <input type="checkbox" id="john" value="F" v-model="form.tipo" />
+                    <label for="john">Otro</label> -->
+                            <input type="checkbox" v-model="form.tipo" id="checkbox" />
+                            <label for="checkbox">{{ form.tipo ? "No" : "Si" }}</label>
+                        </div>
+                    </div>
+
+                    <!-- form-group// -->
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block">
+                            Create Account
+                        </button>
+                    </div>
                 </div>
-            </div> 
-        </div> -->
+            </article>
+        </div>
     </div>
 </template>
 <script>
 export default {
     data() {
         return {
-            items: [],
-            firstName: "",
-            lastName: "",
-            email: "",
-            phone: "",
-            address: "",
-            city: "",
-            state: "",
-            zipCode: "",
-            country: "",
-
-            cardType: '',
-            expirationMonth: '',
-            expirationYear: '',
-            cvv: '',
-            cardNumber: '',
+            form: {
+                ci: "",
+                nombre: "",
+                apellido: "",
+                descripcion: "",
+                fecha_nac: "",
+                sexo: "",
+                celular: "",
+                profesion: "",
+                lugar_trabajo: "",
+                residencia: "",
+                tipo: "",
+            },
         };
     },
     methods: {
-        async getCartItems() {
-            let me = this;
-            let response = await axios.get("/checkout/get/items");
-            me.items = response.data;
-            console.log(me.items);
-        },
-
-        async getUserAddress() {
-            let me = this;
-            if (me.firstName != '' && me.address != '' && me.cardNumber && me.cvv) {
-                // alert("entra");
-                //proceso de pago
-                let response = await axios.post('/process/user/payment', {
-                    'firstName': me.firstName,
-                    'lastName': me.lastName,
-                    'email': me.email,
-                    'phone': me.phone,
-                    'address': me.address,
-                    'city': me.city,
-                    'state': me.state,
-                    'zipCode': me.zipCode,
-                    'country': me.country,
-
-                    'cardType': me.cardType,
-                    'expirationMonth': me.expirationMonth,
-                    'expirationYear': me.expirationYear,
-                    'cvv': me.cvv,
-                    'cardNumber': me.cardNumber,
-                    
-                });
-                console.log(response.data);
-            } else {
-                me.$toastr.e("Informacion de usuario incompleto");
-            }
-
-        },
+        // async getCartItems() {
+        //     let me = this;
+        //     let response = await axios.get("/checkout/get/items");
+        //     me.items = response.data;
+        //     console.log(me.items);
+        // },
+        // async getUserAddress() {
+        //     let me = this;
+        //     if (
+        //         me.firstName != "" &&
+        //         me.address != "" &&
+        //         me.cardNumber &&
+        //         me.cvv
+        //     ) {
+        //         // alert("entra");
+        //         //proceso de pago
+        //         let response = await axios.post("/process/user/payment", {
+        //             firstName: me.firstName,
+        //             lastName: me.lastName,
+        //             email: me.email,
+        //             phone: me.phone,
+        //             address: me.address,
+        //             city: me.city,
+        //             state: me.state,
+        //             zipCode: me.zipCode,
+        //             country: me.country,
+        //             cardType: me.cardType,
+        //             expirationMonth: me.expirationMonth,
+        //             expirationYear: me.expirationYear,
+        //             cvv: me.cvv,
+        //             cardNumber: me.cardNumber,
+        //         });
+        //         console.log(response.data);
+        //     } else {
+        //         me.$toastr.e("Informacion de usuario incompleto");
+        //     }
+        // },
     },
     created() {
         let me = this;
-        me.getCartItems();
     },
 };
 </script>
+
+<style>
+.divider-text {
+    position: relative;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.divider-text span {
+    padding: 7px;
+    font-size: 12px;
+    position: relative;
+    z-index: 2;
+}
+
+.divider-text:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+    top: 55%;
+    left: 0;
+    z-index: 1;
+}
+
+.btn-facebook {
+    background-color: #405d9d;
+    color: #fff;
+}
+
+.btn-twitter {
+    background-color: #42aeec;
+    color: #fff;
+}
+</style>
