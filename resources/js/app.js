@@ -26,6 +26,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component('add-to-cart-button', require('./components/AddToCart.vue').default);
 Vue.component('cart', require('./components/Cart.vue').default);
 Vue.component('checkout', require('./components/Checkout.vue').default);
+Vue.component('registrar-persona', require('./components/persona/registrarPersona.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

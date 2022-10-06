@@ -15,12 +15,6 @@ class CreateFotografosTable extends Migration
     {
         Schema::create('fotografos', function (Blueprint $table) {
             $table->id();
-            $table->string('ci');
-            $table->string('profesion');
-            $table->string('lugar_trabajo');
-            $table->string('direccion');
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

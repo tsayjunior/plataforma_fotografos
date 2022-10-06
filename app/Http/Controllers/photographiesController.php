@@ -20,9 +20,9 @@ class photographiesController extends Controller
         $photographies= Photography::all();//fotografias
         if((auth()->user())){
             $user_id= auth()->user()->id;
-            $fotografo= fotografo::where('user_id', $user_id)->exists();
+            // $fotografo= fotografo::where('user_id', $user_id)->exists();
             $persona= persona::where('user_id', $user_id)->exists();
-            if($fotografo || $persona){
+            if($persona){
                 return view('product', compact('photographies'));
             }else{
                 return view('fotografo.crearFotografo', compact($user_id));

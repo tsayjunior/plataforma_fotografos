@@ -317,11 +317,6 @@
             border: 1px solid #063bb3;
         }
 
-        .checkoutBox{
-            margin-top: 200px;
-            
-        }
-
     </style>
 @endsection
 

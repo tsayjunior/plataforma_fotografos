@@ -11,8 +11,13 @@
 
     <!--====== Title ======-->
     <title>Furnish - Furniture and Decor Website Template</title>
-
-    
+{{-- stile para que el menu de arriba no se vea --}}
+    <style>
+        .checkoutBox{
+            margin-top: 200px;
+            
+        }
+    </style>
     @yield('styles')
 
 
