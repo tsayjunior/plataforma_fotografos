@@ -9,7 +9,7 @@
             <article class="card-body mx-auto" style="max-width: 400px">
                 <div class="form-group">
                     <div class="col-md-12 col-xs-12">
-                        <strong>Carnet de Identidad</strong>
+                        <strong>Carnet de Identidad (*)</strong>
 
                         <div class="form-group input-group">
                             <div class="input-group-prepend">
@@ -21,7 +21,7 @@
                         </div>
                     </div>
                     <div class="col-md-12 col-xs-12">
-                        <strong>Nombre</strong>
+                        <strong>Nombre (*)</strong>
                         <div class="form-group input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">
@@ -32,7 +32,7 @@
                         </div>
                     </div>
                     <div class="col-md-12 col-xs-12">
-                        <strong>Apellido</strong>
+                        <strong>Apellido (*)</strong>
                         <div class="form-group input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">
@@ -43,7 +43,7 @@
                         </div>
                     </div>
                     <div class="col-md-12 col-xs-12">
-                        <strong>Descripcion (*)</strong>
+                        <strong>Descripcion</strong>
                         <div class="form-group input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">
@@ -55,7 +55,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-12 col-xs-12">
-                            <strong>Fecha Nacimiento</strong>
+                            <strong>Fecha Nacimiento (*)</strong>
                             <div class="form-group input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">
@@ -68,7 +68,7 @@
                     </div>
 
                     <div class="col-md-12 col-xs-12">
-                        <strong>Celular</strong>
+                        <strong>Celular (*)</strong>
                         <div class="form-group input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">
@@ -79,7 +79,7 @@
                         </div>
                     </div>
                     <div class="col-md-12 col-xs-12">
-                        <strong>Profesion (*)</strong>
+                        <strong>Profesion</strong>
                         <div class="form-group input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">
@@ -90,7 +90,7 @@
                         </div>
                     </div>
                     <div class="col-md-12 col-xs-12">
-                        <strong>Lugar de Trabajo (*)</strong>
+                        <strong>Lugar de Trabajo</strong>
                         <div class="form-group input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">
@@ -101,7 +101,7 @@
                         </div>
                     </div>
                     <div class="col-md-12 col-xs-12">
-                        <strong>residencia (*)</strong>
+                        <strong>residencia</strong>
                         <div class="form-group input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">
@@ -113,21 +113,21 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-12 col-xs-12">
-                            <strong>Sexo (*)</strong>
+                            <strong>Sexo</strong>
                             <!-- <input type="text" name="sexo" v-model="form.sexo" class="form-control" /> -->
                             <div class="form-group input-group">
                                 <div id="example-3">
 
-                                    <input type="radio" id="uno" value="Uno" v-model="form.sexo">
+                                    <input type="radio" id="uno" value="M" v-model="form.sexo">
                                     <label for="uno">Maculino</label>
-                                    <input type="radio" id="Dos" value="Dos" v-model="form.sexo">
+                                    <input type="radio" id="Dos" value="F" v-model="form.sexo">
                                     <label for="Dos">Femenino</label>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-12 col-xs-12">
-                        <strong>Registrarse como Fotografo?</strong>
+                        <strong>Registrarse como Fotografo?  (*)</strong>
                         <!-- <input type="text" name="tipo" v-model="form.tipo" class="form-control" /> -->
                         <div id="example-3">
                             <!-- <input type="checkbox" id="jack" value="M" v-model="form.tipo" />
@@ -141,8 +141,8 @@
 
                     <!-- form-group// -->
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-block">
-                            Create Account
+                        <button type="submit" class="btn btn-primary btn-block" @click="registrarse()">
+                            Registrarse
                         </button>
                     </div>
                 </div>
@@ -167,9 +167,27 @@ export default {
                 residencia: "",
                 tipo: "",
             },
+            url:{
+                registrar_persona:'persona',
+            }
         };
     },
     methods: {
+        registrarse() {
+            let me = this;
+            axios
+                .post(me.url.registrar_persona, {
+                    // params: {
+                    //     id: me.company_department.id,
+                    // },
+                    params:me.form
+                })
+                .then(function (response) {
+                    me.array_warehouses = response.data;
+                    // me.array_warehouses.splice(0, 0, me.default_data);
+                    me.warehouse.id = "";
+                });
+        },
         // async getCartItems() {
         //     let me = this;
         //     let response = await axios.get("/checkout/get/items");

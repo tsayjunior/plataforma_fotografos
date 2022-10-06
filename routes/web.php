@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CartsController;
 use App\Http\Controllers\FotografoController;
+use App\Http\Controllers\PersonaController;
 use App\Http\Controllers\photographiesController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +25,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('product');
 // });
 Route::resource('/', photographiesController::class);
+Route::resource('persona', PersonaController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

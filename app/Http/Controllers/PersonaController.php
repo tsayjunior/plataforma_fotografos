@@ -35,7 +35,28 @@ class PersonaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return 'entra';
+        $tipo="";
+        if($request->tipo == 'Si'){
+            $tipo='F';
+        }else{
+            $tipo="P";
+        }
+        $persona= persona::create([
+            'ci'=> $request->ci,
+            'nombre'=> $request->nombre,
+            'apellido'=> $request->apellido,
+            'descripcion'=> $request->descripcion,
+            'fecha_nac'=> $request->fecha_nac,
+            'celular'=> $request->celular,
+            'profesion'=> $request->profesion,
+            'lugar_trabajo'=> $request->lugar_trabajo,
+            'residencia'=> $request->residencia,
+            'sexo'=> $request->sexo,//M o F
+            'tipo'=> $tipo,//P o F
+            'user_id'=> $request->user_id,
+        ]);
+        return $persona;
     }
 
     /**
