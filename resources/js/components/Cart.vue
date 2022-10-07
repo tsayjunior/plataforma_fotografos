@@ -11,7 +11,7 @@
       <a
         href="/checkout"
         class="btn btn-warning btn-sm"
-        >Fotos {{itemCount}}</a
+        >Pago {{itemCount}}</a
       >
     </li>
   </div>

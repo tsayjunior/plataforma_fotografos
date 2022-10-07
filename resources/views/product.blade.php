@@ -1,7 +1,6 @@
 @extends('layouts.frontend')
 @section('content')
      <!--====== SLIDER PART START ======-->
-
      <section id="home" class="slider-area pt-100">
         <div class="container-fluid position-relative">
             <div class="slider-active">

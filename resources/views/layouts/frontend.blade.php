@@ -91,19 +91,27 @@
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul id="nav" class="navbar-nav ml-auto">
                                     <li class="nav-item active">
-                                        <a data-scroll-nav="0" href="#home">Home</a>
+                                        <a data-scroll-nav="0" href="#home">Inicio</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a data-scroll-nav="0" href="#product">Products</a>
+                                        <a data-scroll-nav="0" href="#product">Fotografos</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a data-scroll-nav="0" href="#service">Services</a>
+                                        <a data-scroll-nav="0" href="#service">galerias</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a data-scroll-nav="0" href="#showcase">Portfolio</a>
+                                        <a data-scroll-nav="0" href="#showcase">Fotos</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a data-scroll-nav="0" href="#team">Team</a>
+                                        {{-- <a data-scroll-nav="0" href="#team">Eventos</a> --}}
+                                        <div class="dropdown">
+                                            <button class="nav-item" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mis Eventos
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                              <a class="dropdown-item" href="#team">Mis Eventos</a>
+                                              <a class="dropdown-item" href="#team">Eventos Publicos</a>
+                                            </div>
+                                          </div>
                                     </li>
                                     <li class="nav-item">
                                         <a data-scroll-nav="0" href="#blog">Blog</a>

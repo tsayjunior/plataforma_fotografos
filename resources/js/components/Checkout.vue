@@ -20,16 +20,15 @@
                         <div class="form-group">
                             <div class="col-md-6 col-xs-12">
                                 <strong>Pais</strong>
-                                <input type="text" name="country" v-model="country" class="form-control" value="" />
+                                <input type="text" name="country" v-model="country" class="form-control"  />
                             </div>
                             <div class="col-md-6 col-xs-12">
                                 <strong>Nombre</strong>
-                                <input type="text" name="first-name" v-model="firstName" class="form-control"
-                                    value="" />
+                                <input type="text" name="first-name" v-model="firstName" class="form-control"/>
                             </div>
                             <div class="col-md-6 col-xs-12">
                                 <strong>Apellido</strong>
-                                <input type="text" name="last-name" v-model="lastName" class="form-control" value="" />
+                                <input type="text" name="last-name" v-model="lastName" class="form-control"  />
                             </div>
                         </div>
                         <div class="form-group">
@@ -37,7 +36,7 @@
                                 <strong>Direccion</strong>
                             </div>
                             <div class="col-md-12">
-                                <input type="text" name="address" v-model="address" class="form-control" value="" />
+                                <input type="text" name="address" v-model="address" class="form-control" />
                             </div>
                         </div>
                         <div class="form-group">
@@ -45,7 +44,7 @@
                                 <strong>Ciudad</strong>
                             </div>
                             <div class="col-md-12">
-                                <input type="text" name="city" v-model="city" class="form-control" value="" />
+                                <input type="text" name="city" v-model="city" class="form-control" />
                             </div>
                         </div>
                         <div class="form-group">
@@ -53,7 +52,7 @@
                                 <strong>Estado</strong>
                             </div>
                             <div class="col-md-12">
-                                <input type="text" name="state" v-model="state" class="form-control" value="" />
+                                <input type="text" name="state" v-model="state" class="form-control" />
                             </div>
                         </div>
 
@@ -62,7 +61,7 @@
                                 <strong>Codigo Postal</strong>
                             </div>
                             <div class="col-md-12">
-                                <input type="text" name="zip_code" v-model="zipCode" class="form-control" value="" />
+                                <input type="text" name="zip_code" v-model="zipCode" class="form-control" />
                             </div>
                         </div>
                         <div class="form-group">
@@ -70,7 +69,7 @@
                                 <strong>Celular</strong>
                             </div>
                             <div class="col-md-12">
-                                <input type="text" name="phone_number" v-model="phone" class="form-control" value="" />
+                                <input type="text" name="phone_number" v-model="phone" class="form-control" />
                             </div>
                         </div>
                         <div class="form-group">
@@ -78,7 +77,7 @@
                                 <strong>Correo electrónico</strong>
                             </div>
                             <div class="col-md-12">
-                                <input type="email" name="email_address" v-model="email" class="form-control" value="" />
+                                <input type="email" name="email_address" v-model="email" class="form-control" />
                             </div>
                         </div>
 

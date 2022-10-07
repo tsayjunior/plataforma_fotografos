@@ -19,6 +19,9 @@
                             </div>
                             <input type="text" name="ci" v-model="form.ci" class="form-control" placeholder="C.I." />
                         </div>
+                        <div class="alert alert-danger" v-if="errors && errors.ci">
+                            {{errors.ci[0]}}
+                        </div>
                     </div>
                     <div class="col-md-12 col-xs-12">
                         <strong>Nombre (*)</strong>
@@ -29,6 +32,10 @@
                                 </span>
                             </div>
                             <input type="text" name="nombre" v-model="form.nombre" class="form-control" />
+                        </div>
+                        
+                        <div class="alert alert-danger" v-if="errors && errors.nombre">
+                            {{errors.nombre[0]}}
                         </div>
                     </div>
                     <div class="col-md-12 col-xs-12">
@@ -41,6 +48,9 @@
                             </div>
                             <input type="text" name="apellido" v-model="form.apellido" class="form-control" />
                         </div>
+                        <div class="alert alert-danger" v-if="errors && errors.apellido">
+                            {{errors.apellido[0]}}
+                        </div>
                     </div>
                     <div class="col-md-12 col-xs-12">
                         <strong>Descripcion</strong>
@@ -51,6 +61,9 @@
                                 </span>
                             </div>
                             <input type="text" name="descripcion" v-model="form.descripcion" class="form-control" />
+                        </div>
+                        <div class="alert alert-danger" v-if="errors && errors.descripcion">
+                            {{errors.descripcion[0]}}
                         </div>
                     </div>
                     <div class="form-group">
@@ -64,6 +77,9 @@
                                 </div>
                                 <input type="date" name="fecha_nac" v-model="form.fecha_nac" class="form-control" />
                             </div>
+                        <div class="alert alert-danger" v-if="errors && errors.fecha_nac">
+                            {{errors.fecha_nac[0]}}
+                        </div>
                         </div>
                     </div>
 
@@ -77,6 +93,9 @@
                             </div>
                             <input type="text" name="celular" v-model="form.celular" class="form-control" />
                         </div>
+                        <div class="alert alert-danger" v-if="errors && errors.celular">
+                            {{errors.celular[0]}}
+                        </div>
                     </div>
                     <div class="col-md-12 col-xs-12">
                         <strong>Profesion</strong>
@@ -87,6 +106,9 @@
                                 </span>
                             </div>
                             <input type="text" name="profesion" v-model="form.profesion" class="form-control" />
+                        </div>
+                        <div class="alert alert-danger" v-if="errors && errors.profesion">
+                            {{errors.profesion[0]}}
                         </div>
                     </div>
                     <div class="col-md-12 col-xs-12">
@@ -99,6 +121,9 @@
                             </div>
                             <input type="text" name="lugar_trabajo" v-model="form.lugar_trabajo" class="form-control" />
                         </div>
+                        <div class="alert alert-danger" v-if="errors && errors.lugar_trabajo">
+                            {{errors.lugar_trabajo[0]}}
+                        </div>
                     </div>
                     <div class="col-md-12 col-xs-12">
                         <strong>residencia</strong>
@@ -109,6 +134,9 @@
                                 </span>
                             </div>
                             <input type="text" name="residencia" v-model="form.residencia" class="form-control" />
+                        </div>
+                        <div class="alert alert-danger" v-if="errors && errors.residencia">
+                            {{errors.residencia[0]}}
                         </div>
                     </div>
                     <div class="form-group">
@@ -125,6 +153,9 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="alert alert-danger" v-if="errors && errors.sexo">
+                            {{errors.sexo[0]}}
+                        </div>
                     </div>
                     <div class="col-md-12 col-xs-12">
                         <strong>Registrarse como Fotografo?  (*)</strong>
@@ -136,6 +167,9 @@
                     <label for="john">Otro</label> -->
                             <input type="checkbox" v-model="form.tipo" id="checkbox" />
                             <label for="checkbox">{{ form.tipo ? "No" : "Si" }}</label>
+                        </div>
+                        <div class="alert alert-danger" v-if="errors && errors.tipo">
+                            {{errors.tipo[0]}}
                         </div>
                     </div>
 
@@ -169,23 +203,29 @@ export default {
             },
             url:{
                 registrar_persona:'persona',
-            }
+            },
+            errors:{},
         };
     },
     methods: {
         registrarse() {
             let me = this;
             axios
-                .post(me.url.registrar_persona, {
+                .post(me.url.registrar_persona, 
                     // params: {
                     //     id: me.company_department.id,
                     // },
-                    params:me.form
-                })
+                    me.form
+                )
                 .then(function (response) {
                     me.array_warehouses = response.data;
                     // me.array_warehouses.splice(0, 0, me.default_data);
                     me.warehouse.id = "";
+                }).catch(function (e){
+                    console.log(e)
+                    if(e.response.status===422){
+                        me.errors=e.response.data.errors;
+                    }
                 });
         },
         // async getCartItems() {

@@ -35,7 +35,36 @@ class PersonaController extends Controller
      */
     public function store(Request $request)
     {
-        return 'entra';
+        $rules = [
+            'nombre'=>'required',
+            'apellido' => 'required',
+            'profesion' => 'required',
+            'ci'=> 'required',
+            'descripcion'=> 'required',
+            'fecha_nac'=> 'required',
+            'celular'=> 'required',
+            'lugar_trabajo'=> 'required',
+            'residencia'=> 'required',
+            'sexo'=>'required',//M o F
+            'tipo'=>'required',//P o F
+        ];
+        $messages = [
+            'nombre.required' => 'El nombre es requerido',
+            'apellido.required' => 'El apellido es requerido.',
+            'profesion.required' =>'La profesion es requerida.',
+            'ci.required' => 'El ci es requerido.',
+            'descripcion.required' => 'La descripcion es requerida.',
+            'fecha_nac.required' => 'La fecha de nacimiento es requerida.',
+            'celular.required' => 'El celular es requerido',
+            'lugar_trabajo.required' => 'El lugar de trabajo es requerido.',
+            'residencia.required' =>'La residencia es requerida.',
+            'sexo.required' => 'El sexo es requerido.',
+            'tipo.required' => 'el tipo es requerida.',
+        ];
+
+        $this->validate($request, $rules, $messages);
+
+        // return $request;
         $tipo="";
         if($request->tipo == 'Si'){
             $tipo='F';
@@ -54,8 +83,9 @@ class PersonaController extends Controller
             'residencia'=> $request->residencia,
             'sexo'=> $request->sexo,//M o F
             'tipo'=> $tipo,//P o F
-            'user_id'=> $request->user_id,
+            'user_id'=> auth()->user()->id,
         ]);
+        $persona->save();
         return $persona;
     }
 
